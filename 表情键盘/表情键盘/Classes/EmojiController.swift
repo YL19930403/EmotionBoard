@@ -8,11 +8,13 @@
 
 import UIKit
 
+private let EmojiBoardReuseIdentifier = "EmojiBoardReuseIdentifier"
+
 class EmojiController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor.redColor()
+        
         //1.设置子控件
         setUpSubView()
 
@@ -47,7 +49,9 @@ class EmojiController: UIViewController {
     
     //MARK: 懒加载
     private lazy var collectionV : UICollectionView = {
-        let view = UICollectionView(frame:CGRectZero,collectionViewLayout: UICollectionViewFlowLayout())
+        let view = UICollectionView(frame:CGRectZero,collectionViewLayout: EmojiLayout())
+            view.registerClass(EmojiCell.self, forCellWithReuseIdentifier: EmojiBoardReuseIdentifier)
+            view.dataSource = self
         return view
     }()
     
@@ -69,3 +73,72 @@ class EmojiController: UIViewController {
 
     
 }
+
+
+extension EmojiController :UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+         return 10
+    }
+    
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionV.dequeueReusableCellWithReuseIdentifier(EmojiBoardReuseIdentifier, forIndexPath: indexPath) as! EmojiCell
+        cell.backgroundColor = (indexPath.item % 2 == 0 ) ? UIColor.redColor() : UIColor.blueColor()
+        return cell
+    }
+}
+
+class EmojiLayout: UICollectionViewFlowLayout {
+    override func prepareLayout() {
+        super.prepareLayout()
+        let width = collectionView!.bounds.width / 7
+        itemSize = CGSize(width:width, height: width)
+        minimumLineSpacing = 0
+        minimumLineSpacing = 0
+        scrollDirection = .Horizontal
+        collectionView?.bounces = false
+        collectionView?.pagingEnabled = true
+        collectionView?.showsHorizontalScrollIndicator = false
+     
+        //注意：最好不要乘以0.5 ， 因为CGFloat是不正确的
+        let y = (collectionView!.bounds.height - 3 * width) * 0.45
+        collectionView?.contentInset = UIEdgeInsets(top: y, left: 0, bottom: y, right: 0)
+        
+        
+    }
+}
+
+class EmojiCell: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpSubViews()
+    }
+    
+    func setUpSubViews(){
+        contentView.addSubview(iconButton)
+        iconButton.frame = contentView.bounds
+        iconButton.frame = CGRectInset(contentView.bounds, 4, 4)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private lazy var iconButton : UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = UIColor.whiteColor()
+        return btn
+    }()
+}
+
+
+
+
+
+
+
+
+
+
