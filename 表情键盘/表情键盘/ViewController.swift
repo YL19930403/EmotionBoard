@@ -10,16 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var customTextV: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        addChildViewController(emojiVC)
+        //替换弹出键盘
+        customTextV.inputView = emojiVC.view
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
+    //MARK:懒加载
+    private lazy var emojiVC : EmojiController = EmojiController()
 }
 

@@ -15,6 +15,8 @@
 		297962F51CFB364500EB6C58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297962F31CFB364500EB6C58 /* LaunchScreen.storyboard */; };
 		297963001CFB364500EB6C58 /* ____Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297962FF1CFB364500EB6C58 /* ____Tests.swift */; };
 		2979630B1CFB364500EB6C58 /* ____UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979630A1CFB364500EB6C58 /* ____UITests.swift */; };
+		2979631A1CFB377400EB6C58 /* EmojiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297963191CFB377400EB6C58 /* EmojiController.swift */; };
+		2979631C1CFB3DD200EB6C58 /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2979631B1CFB3DD200EB6C58 /* Emoticons.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		297963061CFB364500EB6C58 /* 表情键盘UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "表情键盘UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2979630A1CFB364500EB6C58 /* ____UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "____UITests.swift"; sourceTree = "<group>"; };
 		2979630C1CFB364500EB6C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		297963191CFB377400EB6C58 /* EmojiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiController.swift; sourceTree = "<group>"; };
+		2979631B1CFB3DD200EB6C58 /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		297962E61CFB364500EB6C58 /* 表情键盘 */ = {
 			isa = PBXGroup;
 			children = (
+				297963181CFB376600EB6C58 /* Classes */,
 				297962E71CFB364500EB6C58 /* AppDelegate.swift */,
 				297962E91CFB364500EB6C58 /* ViewController.swift */,
 				297962EB1CFB364500EB6C58 /* Main.storyboard */,
@@ -126,6 +131,15 @@
 				2979630C1CFB364500EB6C58 /* Info.plist */,
 			);
 			path = "表情键盘UITests";
+			sourceTree = "<group>";
+		};
+		297963181CFB376600EB6C58 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2979631B1CFB3DD200EB6C58 /* Emoticons.bundle */,
+				297963191CFB377400EB6C58 /* EmojiController.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				297962F51CFB364500EB6C58 /* LaunchScreen.storyboard in Resources */,
+				2979631C1CFB3DD200EB6C58 /* Emoticons.bundle in Resources */,
 				297962F21CFB364500EB6C58 /* Assets.xcassets in Resources */,
 				297962ED1CFB364500EB6C58 /* Main.storyboard in Resources */,
 			);
@@ -259,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2979631A1CFB377400EB6C58 /* EmojiController.swift in Sources */,
 				297962EA1CFB364500EB6C58 /* ViewController.swift in Sources */,
 				297962F01CFB364500EB6C58 /* ____.xcdatamodeld in Sources */,
 				297962E81CFB364500EB6C58 /* AppDelegate.swift in Sources */,
@@ -486,6 +502,7 @@
 				297963111CFB364500EB6C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		297963121CFB364500EB6C58 /* Build configuration list for PBXNativeTarget "表情键盘Tests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +511,7 @@
 				297963141CFB364500EB6C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		297963151CFB364500EB6C58 /* Build configuration list for PBXNativeTarget "表情键盘UITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +520,7 @@
 				297963171CFB364500EB6C58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
