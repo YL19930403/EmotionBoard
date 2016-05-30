@@ -6,6 +6,7 @@
 //  Copyright © 2016年 余亮. All rights reserved.
 //
 
+
 import UIKit
 
 private let EmojiBoardReuseIdentifier = "EmojiBoardReuseIdentifier"
@@ -14,7 +15,7 @@ class EmojiController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = UIColor.redColor()
         //1.设置子控件
         setUpSubView()
 
@@ -77,7 +78,7 @@ class EmojiController: UIViewController {
 
 extension EmojiController :UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return 10
+         return 21*4
     }
     
     
@@ -88,13 +89,14 @@ extension EmojiController :UICollectionViewDataSource {
     }
 }
 
+//自定义布局
 class EmojiLayout: UICollectionViewFlowLayout {
     override func prepareLayout() {
         super.prepareLayout()
-        let width = collectionView!.bounds.width / 7
+        let width = (collectionView?.bounds.width)! / 7
         itemSize = CGSize(width:width, height: width)
         minimumLineSpacing = 0
-        minimumLineSpacing = 0
+        minimumInteritemSpacing = 0
         scrollDirection = .Horizontal
         collectionView?.bounces = false
         collectionView?.pagingEnabled = true
@@ -116,7 +118,7 @@ class EmojiCell: UICollectionViewCell {
     
     func setUpSubViews(){
         contentView.addSubview(iconButton)
-        iconButton.frame = contentView.bounds
+        iconButton.backgroundColor = UIColor.whiteColor()
         iconButton.frame = CGRectInset(contentView.bounds, 4, 4)
         
     }
@@ -126,11 +128,7 @@ class EmojiCell: UICollectionViewCell {
     }
     
     
-    private lazy var iconButton : UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = UIColor.whiteColor()
-        return btn
-    }()
+    private lazy var iconButton : UIButton = UIButton()
 }
 
 
