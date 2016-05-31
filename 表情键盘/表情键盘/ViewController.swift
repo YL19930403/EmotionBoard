@@ -27,3 +27,37 @@ class ViewController: UIViewController {
     private lazy var emojiVC : EmojiController = EmojiController()
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

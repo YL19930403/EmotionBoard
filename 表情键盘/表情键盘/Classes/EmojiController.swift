@@ -9,6 +9,7 @@
 
 import UIKit
 
+
 private let EmojiBoardReuseIdentifier = "EmojiBoardReuseIdentifier"
 
 class EmojiController: UIViewController {
@@ -44,7 +45,7 @@ class EmojiController: UIViewController {
     }
     
     func itemClick(item : UIBarButtonItem){
-        print(item.tag)
+        collectionV.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: item.tag), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true )
     }
     
     
@@ -72,19 +73,31 @@ class EmojiController: UIViewController {
         return bar
     }()
 
-    
+    private lazy var packages : [EmojiPackage] = EmojiPackage.loadPackages()
 }
 
 
-extension EmojiController :UICollectionViewDataSource {
+extension EmojiController :UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-         return 21*4
+        return packages[section].emoticons?.count ?? 0
     }
-    
+  
+
+    func numberOfSectionsInCollectionView(collectionView:UICollectionView) -> Int {
+        return packages.count
+    }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionV.dequeueReusableCellWithReuseIdentifier(EmojiBoardReuseIdentifier, forIndexPath: indexPath) as! EmojiCell
         cell.backgroundColor = (indexPath.item % 2 == 0 ) ? UIColor.redColor() : UIColor.blueColor()
+        
+        //1.取出对应的组
+        let package = packages[indexPath.section]
+        //2.取出对应组对应行的模型
+        let emoticon = package.emoticons![indexPath.item]
+        
+        //3.赋值给cell
+        cell.emoticon = emoticon
         return cell
     }
 }
@@ -116,6 +129,26 @@ class EmojiCell: UICollectionViewCell {
         setUpSubViews()
     }
     
+    var emoticon : Emoticon?{
+        didSet{
+            //1.判断是否是图片表情
+            if emoticon!.chs != nil {
+                iconButton.setImage(UIImage(contentsOfFile: emoticon!.imagePath!), forState: UIControlState.Normal)
+            }else {
+                //防止重用
+                iconButton.setImage(nil , forState: UIControlState.Normal)
+            }
+            //2.设置emoji表情
+                //注意：加上??  可以防止重用
+            iconButton.setTitle(emoticon?.emojiStr ?? "", forState: UIControlState.Normal)
+            //3.判断是否是删除按钮
+            if emoticon!.isRemoveButton {
+                iconButton.setImage(UIImage(named:"compose_emotion_delete_highlighted"), forState: UIControlState.Highlighted)
+                    iconButton.setImage(UIImage(named:"compose_emotion_delete"), forState: UIControlState.Normal)
+            }
+        }
+    }
+    
     func setUpSubViews(){
         contentView.addSubview(iconButton)
         iconButton.backgroundColor = UIColor.whiteColor()
@@ -128,8 +161,36 @@ class EmojiCell: UICollectionViewCell {
     }
     
     
-    private lazy var iconButton : UIButton = UIButton()
+    private lazy var iconButton : UIButton = {
+            let btn = UIButton()
+            btn.titleLabel?.font = UIFont.systemFontOfSize(32)
+            return btn
+    }()
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
