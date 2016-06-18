@@ -23,6 +23,26 @@ class ViewController: UIViewController {
     }
     
     
+    
+    @IBAction func ItemClick(sender: UIBarButtonItem) {
+        
+        var strM = String()
+        //需要发送给服务器的数据
+        self.customTextV.attributedText.enumerateAttributesInRange(NSMakeRange(0, self.customTextV.attributedText.length), options: NSAttributedStringEnumerationOptions(rawValue:0)) { (objc , range , _ ) in
+                //便利的时候传递给我们的objc是一个字典，如果字典中的NSAttachMent这个key有值，那么就证明当前是一个图片， print(objc["NSAttachment"])  , range就是存字符串的范围，如果纯字符串中间有图片表情，那么染个就会传递多次
+            if objc["NSAttachment"] != nil {
+                let attachment = objc["NSAttachment"] as! EmoticonTextAttachment
+                strM += attachment.chs!
+                
+            }else {
+                //文字
+                strM += (self.customTextV.text as NSString).substringWithRange(range)
+            }
+        }
+        print("strM = \(strM)")
+    }
+    
+    
     @IBOutlet weak var customTextV: UITextView!
     
     override func viewDidLoad() {
@@ -53,7 +73,9 @@ class ViewController: UIViewController {
         //2.判断当前电机的是否是表情图片
         if (emoticon.png != nil ){
             //1.创建附件
-            let attachment = NSTextAttachment()
+            let attachment = EmoticonTextAttachment()
+            attachment.chs = emoticon.chs
+            
             ///附件的大小就是文字字体的大小
             attachment.bounds = CGRectMake(0, -4, 20, 20)
             attachment.image = UIImage(contentsOfFile : emoticon.imagePath!)
