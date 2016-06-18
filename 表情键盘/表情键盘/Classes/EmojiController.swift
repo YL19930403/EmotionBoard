@@ -88,7 +88,8 @@ class EmojiController: UIViewController {
         return bar
     }()
 
-    private lazy var packages : [EmojiPackage] = EmojiPackage.loadPackages()
+    ///单例：保证只获取一次数据
+    private lazy var packages : [EmojiPackage] = EmojiPackage.packageList
 }
 
 

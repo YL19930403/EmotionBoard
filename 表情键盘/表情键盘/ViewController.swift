@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         [unowned self ] (emoticon ) -> () in
 //            print(emoticon.chs )
         ///还不能动态获取字体大小
-      self.customTextV.insertEmoticon(emoticon, font: 20 )
+      self.customTextV.insertEmoticon(emoticon)
     
     }
 }

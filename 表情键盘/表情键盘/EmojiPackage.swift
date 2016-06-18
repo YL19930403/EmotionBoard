@@ -38,7 +38,9 @@ class EmojiPackage: NSObject {
     // 浪小花 -> 一组  -> 所有的表情模型(emoticons)
     // 默认 -> 一组  -> 所有的表情模型(emoticons)
     // emoji -> 一组  -> 所有的表情模型(emoticons)
-    class func loadPackages() -> [EmojiPackage] {
+    static let packageList : [EmojiPackage] = EmojiPackage.loadPackages()
+    
+   private class func loadPackages() -> [EmojiPackage] {
         var packages = [EmojiPackage]()
         //0.创建最近组
         let pk = EmojiPackage(id : "")
