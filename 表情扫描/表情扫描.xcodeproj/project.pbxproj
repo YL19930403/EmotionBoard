@@ -15,6 +15,7 @@
 		29A3067C1CFC91BA003E4BA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29A3067A1CFC91BA003E4BA4 /* LaunchScreen.storyboard */; };
 		29A306871CFC91BA003E4BA4 /* ____Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A306861CFC91BA003E4BA4 /* ____Tests.swift */; };
 		29A306921CFC91BA003E4BA4 /* ____UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A306911CFC91BA003E4BA4 /* ____UITests.swift */; };
+		29A306A01CFC9A0D003E4BA4 /* EmojiPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A3069F1CFC9A0D003E4BA4 /* EmojiPackage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		29A3068D1CFC91BA003E4BA4 /* 表情扫描UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "表情扫描UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A306911CFC91BA003E4BA4 /* ____UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "____UITests.swift"; sourceTree = "<group>"; };
 		29A306931CFC91BA003E4BA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29A3069F1CFC9A0D003E4BA4 /* EmojiPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPackage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				29A3066E1CFC91BA003E4BA4 /* AppDelegate.swift */,
 				29A306701CFC91BA003E4BA4 /* ViewController.swift */,
+				29A3069F1CFC9A0D003E4BA4 /* EmojiPackage.swift */,
 				29A306721CFC91BA003E4BA4 /* Main.storyboard */,
 				29A306781CFC91BA003E4BA4 /* Assets.xcassets */,
 				29A3067A1CFC91BA003E4BA4 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29A306711CFC91BA003E4BA4 /* ViewController.swift in Sources */,
+				29A306A01CFC9A0D003E4BA4 /* EmojiPackage.swift in Sources */,
 				29A306771CFC91BA003E4BA4 /* ____.xcdatamodeld in Sources */,
 				29A3066F1CFC91BA003E4BA4 /* AppDelegate.swift in Sources */,
 			);

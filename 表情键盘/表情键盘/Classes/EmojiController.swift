@@ -14,6 +14,20 @@ private let EmojiBoardReuseIdentifier = "EmojiBoardReuseIdentifier"
 
 class EmojiController: UIViewController {
 
+    
+    ///定义闭包，用于传递我们选中的表情
+    var emotionDidSelectedCallBack:((emoticon : Emoticon) -> ())?
+    
+    init(callBack : (emoticon : Emoticon) -> () ){
+        self.emotionDidSelectedCallBack = callBack
+        super.init(nibName: nil , bundle: nil )
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.redColor()
@@ -54,6 +68,7 @@ class EmojiController: UIViewController {
         let view = UICollectionView(frame:CGRectZero,collectionViewLayout: EmojiLayout())
             view.registerClass(EmojiCell.self, forCellWithReuseIdentifier: EmojiBoardReuseIdentifier)
             view.dataSource = self
+            view.delegate = self
         return view
     }()
     
@@ -99,6 +114,13 @@ extension EmojiController :UICollectionViewDataSource,UICollectionViewDelegate {
         //3.赋值给cell
         cell.emoticon = emoticon
         return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//        print(indexPath.row)
+        ///拿到对应组的对应的模型
+        let emoticon = packages[indexPath.section].emoticons![indexPath.item]
+        emotionDidSelectedCallBack!(emoticon : emoticon)
     }
 }
 
@@ -164,6 +186,7 @@ class EmojiCell: UICollectionViewCell {
     private lazy var iconButton : UIButton = {
             let btn = UIButton()
             btn.titleLabel?.font = UIFont.systemFontOfSize(32)
+            btn.userInteractionEnabled = false
             return btn
     }()
 }

@@ -168,7 +168,7 @@ class Emoticon: NSObject {
         self.isRemoveButton = isRemoveButton
     }
     
-    
+        
     
     /// 表情图片的全路径
     var imagePath: String?

@@ -10,16 +10,55 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var customTextF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //emoji表情对应的十六进制
+        let code = "0x2600"
+        
+        //1.从字符串中取出十六进制的数
+          //创建一个扫描器，扫描器可以从字符串中提取我们想要的数据
+        let scanner = NSScanner(string:code)
+        
+        //2. 将十六进制转换为字符串
+        var result : UInt32 = 0
+        scanner.scanHexInt(&result)
+        
+        //3.将十六进制转换为emoji字符串
+        let emojiStr = Character(UnicodeScalar(result))
+         //4.显示
+        print(emojiStr)
+        customTextF.text = String(emojiStr)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
+    
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

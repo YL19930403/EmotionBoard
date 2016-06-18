@@ -10,6 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //定义一个闭包属性
+    var EmojiDidSelectBlock : ((emojicon : Emoticon) -> ())?
+    init(callBack : (emojicon : Emoticon) -> ()){
+        self.EmojiDidSelectBlock = callBack
+        super.init(nibName: nil , bundle: nil )
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+    }
+    
     
     @IBOutlet weak var customTextV: UITextView!
     
@@ -17,14 +29,30 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         addChildViewController(emojiVC)
-        //替换弹出键盘
+        //1,替换弹出键盘
+        customTextV.inputView = emojiVC.view
+        //2. 将表情键盘控制器的view设置为UITextView的inputView
         customTextV.inputView = emojiVC.view
         
     }
 
     
     //MARK:懒加载
-    private lazy var emojiVC : EmojiController = EmojiController()
+       ///闭包的循环引用问题：
+            //weak 相当于OC中的__weak, 特点：对象释放之后会将变量设置为nil
+            //unowned  相当于OC中的unsafe_unretained, 特点：对象释放之后不会讲变量设置为nil
+    
+    private lazy var emojiVC : EmojiController = EmojiController {
+        [unowned self ] (emoticon ) -> () in
+//            print(emoticon.chs )
+        //1.判断当前点击的是否是emoji表情
+        if (emoticon.emojiStr != nil) {
+            self.customTextV.replaceRange(self.customTextV.selectedTextRange! , withText : emoticon.emojiStr! )
+        }
+        
+    }
+    
+    
 }
 
 
