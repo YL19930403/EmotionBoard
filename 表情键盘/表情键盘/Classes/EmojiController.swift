@@ -154,7 +154,7 @@ class EmojiCell: UICollectionViewCell {
     var emoticon : Emoticon?{
         didSet{
             //1.判断是否是图片表情
-            if emoticon!.chs != nil {
+            if (emoticon!.chs != nil) {
                 iconButton.setImage(UIImage(contentsOfFile: emoticon!.imagePath!), forState: UIControlState.Normal)
             }else {
                 //防止重用

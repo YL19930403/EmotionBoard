@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2920F1761D15396E00C66298 /* EmoticonTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920F1751D15396E00C66298 /* EmoticonTextAttachment.swift */; };
+		2944C1B11D158D4B005F0373 /* UITextView+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2944C1B01D158D4B005F0373 /* UITextView+Category.swift */; };
 		297962E81CFB364500EB6C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297962E71CFB364500EB6C58 /* AppDelegate.swift */; };
 		297962EA1CFB364500EB6C58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297962E91CFB364500EB6C58 /* ViewController.swift */; };
 		297962ED1CFB364500EB6C58 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 297962EB1CFB364500EB6C58 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		2920F1751D15396E00C66298 /* EmoticonTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonTextAttachment.swift; sourceTree = "<group>"; };
+		2944C1B01D158D4B005F0373 /* UITextView+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Category.swift"; sourceTree = "<group>"; };
 		297962E41CFB364500EB6C58 /* 表情键盘.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "表情键盘.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		297962E71CFB364500EB6C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		297962E91CFB364500EB6C58 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				297963181CFB376600EB6C58 /* Classes */,
 				297962E71CFB364500EB6C58 /* AppDelegate.swift */,
 				297962E91CFB364500EB6C58 /* ViewController.swift */,
+				2944C1B01D158D4B005F0373 /* UITextView+Category.swift */,
 				2920F1751D15396E00C66298 /* EmoticonTextAttachment.swift */,
 				29AEA9DF1CFDDE1600056E69 /* EmojiPackage.swift */,
 				297963191CFB377400EB6C58 /* EmojiController.swift */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29AEA9E01CFDDE1600056E69 /* EmojiPackage.swift in Sources */,
+				2944C1B11D158D4B005F0373 /* UITextView+Category.swift in Sources */,
 				2979631A1CFB377400EB6C58 /* EmojiController.swift in Sources */,
 				297962EA1CFB364500EB6C58 /* ViewController.swift in Sources */,
 				2920F1761D15396E00C66298 /* EmoticonTextAttachment.swift in Sources */,

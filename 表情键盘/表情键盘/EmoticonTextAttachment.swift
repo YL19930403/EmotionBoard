@@ -11,5 +11,48 @@ import UIKit
 class EmoticonTextAttachment: NSTextAttachment {
     //保存对应表情的文字
     var chs : String?
+    
+    class func imageText(emoticon : Emoticon , font : CGFloat) -> NSAttributedString {
+        //创建附件
+        let attachment = EmoticonTextAttachment()
+        attachment.chs = emoticon.chs
+        attachment.image = UIImage(contentsOfFile:emoticon.imagePath!)
+        //设置附件的大小
+        attachment.bounds = CGRectMake(0, -4, font, font)
+        //2.根据福监察局属性字符串
+        return NSAttributedString(attachment: attachment)
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,21 +25,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func ItemClick(sender: UIBarButtonItem) {
-        
-        var strM = String()
-        //需要发送给服务器的数据
-        self.customTextV.attributedText.enumerateAttributesInRange(NSMakeRange(0, self.customTextV.attributedText.length), options: NSAttributedStringEnumerationOptions(rawValue:0)) { (objc , range , _ ) in
-                //便利的时候传递给我们的objc是一个字典，如果字典中的NSAttachMent这个key有值，那么就证明当前是一个图片， print(objc["NSAttachment"])  , range就是存字符串的范围，如果纯字符串中间有图片表情，那么染个就会传递多次
-            if objc["NSAttachment"] != nil {
-                let attachment = objc["NSAttachment"] as! EmoticonTextAttachment
-                strM += attachment.chs!
-                
-            }else {
-                //文字
-                strM += (self.customTextV.text as NSString).substringWithRange(range)
-            }
-        }
-        print("strM = \(strM)")
+            print(self.customTextV.emoticonAttributeText())
     }
     
     
@@ -53,6 +39,7 @@ class ViewController: UIViewController {
         customTextV.inputView = emojiVC.view
         //2. 将表情键盘控制器的view设置为UITextView的inputView
         customTextV.inputView = emojiVC.view
+        self.customTextV.font  = UIFont.systemFontOfSize(20)
         
     }
 
@@ -65,42 +52,11 @@ class ViewController: UIViewController {
     private lazy var emojiVC : EmojiController = EmojiController {
         [unowned self ] (emoticon ) -> () in
 //            print(emoticon.chs )
-        //1.判断当前点击的是否是emoji表情
-        if (emoticon.emojiStr != nil) {
-            self.customTextV.replaceRange(self.customTextV.selectedTextRange! , withText : emoticon.emojiStr! )
-        }
-        
-        //2.判断当前电机的是否是表情图片
-        if (emoticon.png != nil ){
-            //1.创建附件
-            let attachment = EmoticonTextAttachment()
-            attachment.chs = emoticon.chs
-            
-            ///附件的大小就是文字字体的大小
-            attachment.bounds = CGRectMake(0, -4, 20, 20)
-            attachment.image = UIImage(contentsOfFile : emoticon.imagePath!)
-            //2.根据附件创建属性字符串
-            let imageText = NSAttributedString(attachment : attachment)
-            //3.拿到当前所有的内容
-            let strM = NSMutableAttributedString(attributedString : self.customTextV.attributedText)
-            //4.插入表情到当前光标所在的位置
-            let range = self.customTextV.selectedRange
-            strM.replaceCharactersInRange(range, withAttributedString:imageText)
-            ///属性字符串有自己默认的尺寸
-            strM.addAttribute(NSFontAttributeName , value: UIFont.systemFontOfSize(20) , range:NSMakeRange(range.location, 1))
-            
-            //5.将替换后的字符串赋值给UITextView
-            self.customTextV.attributedText = strM
-            //6.恢复光标所在的位置
-                //两个参数： 第一个指定光标所在的位置， 第二个选中文本的个数
-            self.customTextV.selectedRange = NSMakeRange(range.location + 1 , 0)
-        }
-        
+        ///还不能动态获取字体大小
+      self.customTextV.insertEmoticon(emoticon, font: 20 )
+    
     }
-    
-    
 }
-
 
 
 
