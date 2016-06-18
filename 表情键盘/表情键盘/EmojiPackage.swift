@@ -103,6 +103,39 @@ class EmojiPackage: NSObject {
     
     
     /**
+        用于给最近添加表情
+     */
+    func appendEmotions(emoticon : Emoticon){
+        //1.判断是否是删除按钮
+        if emoticon.isRemoveButton{
+            return
+        }
+        
+        //2.判断当前点击的表情是否已经添加到最近数组中
+        let contains = emoticons!.contains(emoticon)
+        if !contains {
+            //删除 删除按钮
+            emoticons?.removeLast()
+            emoticons?.append(emoticon)
+        }
+        
+        //3.对数组进行排序
+        var result = emoticons?.sort({ (e1, e2) -> Bool in
+            return e1.times > e2.times
+        })
+        
+        //4.删除多余的表情
+        if !contains{
+            result?.removeLast()
+            //添加一个删除按钮
+            result?.append(Emoticon(isRemoveButton:true ))
+        }
+        emoticons = result
+//        print(emoticons?.count)
+    }
+    
+    
+    /**
      获取指定文件的全路径
      
      :param: fileName 文件的名称
@@ -159,6 +192,9 @@ class Emoticon: NSObject {
     
     /// 当前表情对应的文件夹
     var id: String?
+    
+    ///记录当前表情被使用的次数
+    var times : Int = 0
     
     ///标记是否是删除按钮
     var  isRemoveButton :Bool = false

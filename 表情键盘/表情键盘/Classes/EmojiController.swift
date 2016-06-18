@@ -69,7 +69,7 @@ class EmojiController: UIViewController {
             view.registerClass(EmojiCell.self, forCellWithReuseIdentifier: EmojiBoardReuseIdentifier)
             view.dataSource = self
             view.delegate = self
-        return view
+            return view
     }()
     
     private lazy var toolBar : UIToolbar = {
@@ -118,8 +118,13 @@ extension EmojiController :UICollectionViewDataSource,UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 //        print(indexPath.row)
-        ///拿到对应组的对应的模型
+        //1.处理最近表情，将当前使用的表情添加到最近表情的数组中
         let emoticon = packages[indexPath.section].emoticons![indexPath.item]
+        emoticon.times++
+        packages[0].appendEmotions(emoticon)
+        
+        ///拿到对应组的对应的模型
+//        let emoticon = packages[indexPath.section].emoticons![indexPath.item]
         emotionDidSelectedCallBack!(emoticon : emoticon)
     }
 }
