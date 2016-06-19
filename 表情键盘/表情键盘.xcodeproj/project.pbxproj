@@ -20,6 +20,8 @@
 		298DDD881D16D5E2009285BF /* EmojiPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DDD851D16D5E2009285BF /* EmojiPackage.swift */; };
 		298DDD891D16D5E2009285BF /* EmoticonTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DDD861D16D5E2009285BF /* EmoticonTextAttachment.swift */; };
 		298DDD8A1D16D5E2009285BF /* UITextView+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DDD871D16D5E2009285BF /* UITextView+Category.swift */; };
+		298DDD8C1D16F4EA009285BF /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298DDD8B1D16F4EA009285BF /* UIBarButtonItem+Extension.swift */; };
+		A8EA8051E271BFB180CABB66 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EF2303565EF7A6FFE6436F /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,10 @@
 		298DDD851D16D5E2009285BF /* EmojiPackage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPackage.swift; sourceTree = "<group>"; };
 		298DDD861D16D5E2009285BF /* EmoticonTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonTextAttachment.swift; sourceTree = "<group>"; };
 		298DDD871D16D5E2009285BF /* UITextView+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Category.swift"; sourceTree = "<group>"; };
+		298DDD8B1D16F4EA009285BF /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		CC63F4C2782B135BD91A64AD /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D9EF2303565EF7A6FFE6436F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE95D751F714A988E9DDDC5F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8EA8051E271BFB180CABB66 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +100,8 @@
 				297962FE1CFB364500EB6C58 /* 表情键盘Tests */,
 				297963091CFB364500EB6C58 /* 表情键盘UITests */,
 				297962E51CFB364500EB6C58 /* Products */,
+				E1044F2B9CFCA431641F1495 /* Pods */,
+				AC770B1606587A99AC57AF5F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +120,7 @@
 			children = (
 				297963181CFB376600EB6C58 /* Classes */,
 				297962E71CFB364500EB6C58 /* AppDelegate.swift */,
+				298DDD8B1D16F4EA009285BF /* UIBarButtonItem+Extension.swift */,
 				297962E91CFB364500EB6C58 /* ViewController.swift */,
 				297962EB1CFB364500EB6C58 /* Main.storyboard */,
 				297962F11CFB364500EB6C58 /* Assets.xcassets */,
@@ -159,6 +169,23 @@
 			path = Emoticon;
 			sourceTree = "<group>";
 		};
+		AC770B1606587A99AC57AF5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF2303565EF7A6FFE6436F /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1044F2B9CFCA431641F1495 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC63F4C2782B135BD91A64AD /* Pods.debug.xcconfig */,
+				DE95D751F714A988E9DDDC5F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,9 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2979630F1CFB364500EB6C58 /* Build configuration list for PBXNativeTarget "表情键盘" */;
 			buildPhases = (
+				97AA09FF8DE992AD75543F3A /* Check Pods Manifest.lock */,
 				297962E01CFB364500EB6C58 /* Sources */,
 				297962E11CFB364500EB6C58 /* Frameworks */,
 				297962E21CFB364500EB6C58 /* Resources */,
+				AC345C488C02BA70BDEB2655 /* Embed Pods Frameworks */,
+				315F791D31F774E32568A367 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -286,11 +316,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		315F791D31F774E32568A367 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97AA09FF8DE992AD75543F3A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AC345C488C02BA70BDEB2655 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		297962E01CFB364500EB6C58 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				298DDD8C1D16F4EA009285BF /* UIBarButtonItem+Extension.swift in Sources */,
 				298DDD881D16D5E2009285BF /* EmojiPackage.swift in Sources */,
 				298DDD8A1D16D5E2009285BF /* UITextView+Category.swift in Sources */,
 				2979631A1CFB377400EB6C58 /* EmojiController.swift in Sources */,
@@ -437,6 +516,7 @@
 		};
 		297963101CFB364500EB6C58 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC63F4C2782B135BD91A64AD /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "表情键盘/Info.plist";
@@ -448,6 +528,7 @@
 		};
 		297963111CFB364500EB6C58 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE95D751F714A988E9DDDC5F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "表情键盘/Info.plist";
